@@ -2,19 +2,20 @@
 action_label: Read More &rarr;
 action_link: /about
 action_type: text
-description: Sit down, relax, and get to know Hugo Apéro. Built on top of Blogophonic,
-  we wanted to create a polished Hugo theme with the right features for a true personal
-  website. We set out to create a theme that is a pleasure to learn, and one that
-  helps others get to know you better. It is more than a blog, with flexible custom
-  layouts that help you introduce yourself online.
+description: Hi! I'm a PhD candidate in Public Policy at Harvard Kennedy School, working at the intersection of psychology, economics, and political science. I am interested in the formation and the effects of political and economic beliefs, such as beliefs about election fraud, social mobility, or how financial markets work. Most of his current thinking centers around the question “what makes information persuasive?”
+ 
+I hold a BSc in Philosophy, Politics and Economics from University College London and a Master of Behavioral and Decision Science from the University of Pennsylvania. Most recently, I worked as a Behavioral Economist at the UK's Financial Conduct Authority, where I ran online experiments on financial decision-making. 
+ 
+I am originally from Austria and love to travel and try food around the world. Music also plays an important role in my life.
+
 image_left: true
 images:
 - img/_MG_9143.jpg
-show_action_link: true
-show_social_links: true
-subtitle: A Hugo theme you'll want to hang out with
+show_action_link: false
+show_social_links: false
+subtitle: PhD Candidate in Public Policy @ Harvard Kennedy School
 text_align_left: false
-title: Hugo Apéro
+title: Max Spohn
 type: home
 ---
 
