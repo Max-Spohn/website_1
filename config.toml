@@ -2,7 +2,7 @@ baseURL = "/"
 theme = "hugo-apero"
 languageCode = "en"
 title = ""
-author = "Alison Hill"
+author = "Max Spohn"
 copyright = "" # set to override the auto generated copyright using org info and now year
 googleAnalytics = ""
 disqusShortname = "" # see params.utterances to use utterances instead of Disqus
@@ -104,34 +104,39 @@ enableEmoji = true
   tag = "tags"
 
 [menu]
-  # Configure header 
+  # Configure header
+  [[menu.header]]
+    name = "Home"
+    title = "Home"
+    url = "/"
+    weight = 1
   [[menu.header]]
     name = "Research"
     title = "Research"
     url = "/collection/"
-    weight = 1
+    weight = 2
   [[menu.header]]
     name = "CV"
-    title = "Project Portfolio"
+    title = "CV"
     url = "/project/"
-    weight = 2
+    weight = 3
     
   # Configure footer  
-  [[menu.footer]]
-    name = "License"
-    title = "License"
-    url = "/license/"
-    weight = 1
+#  [[menu.footer]]
+#    name = "License"
+#    title = "License"
+#    url = "/license/"
+#    weight = 1
   [[menu.footer]]
     name = "Contact"
     title = "Contact form"
     url = "/contact/"
-    weight = 2
-  [[menu.footer]]
-    name = "Contributors"
-    title = "Contributors"
-    url = "/contributors/"
-    weight = 3
+    weight = 1
+#  [[menu.footer]]
+#    name = "Contributors"
+#    title = "Contributors"
+#    url = "/contributors/"
+#    weight = 3
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
