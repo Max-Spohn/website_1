@@ -9,7 +9,7 @@ image_left: true
 images:
 - img/_MG_9143.jpg
 recent_article:
-  citation: "“A research agenda for making evidence useful, usable and used in policymaking” (2026). With Elizabeth Linos, Pedro Rey-Biel, et al. *Nature Human Behaviour.*"
+  citation: "Spohn, M., Boland, A., Lasky-Fink, J. et al. A research agenda for making evidence useful, usable and used in policymaking. *Nat Hum Behav* (2026)."
   url: "https://doi.org/10.1038/s41562-026-02593-3"
 show_action_link: false
 show_social_links: false

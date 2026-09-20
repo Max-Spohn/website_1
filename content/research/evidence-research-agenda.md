@@ -1,6 +1,6 @@
 ---
 title: "A research agenda for making evidence useful, usable and used in policymaking"
-authors: "With Elizabeth Linos, Pedro Rey-Biel, et al."
+authors: "With Amira Boland, Jessica Lasky-Fink, et al."
 status: publication
 weight: 1
 year: 2026
