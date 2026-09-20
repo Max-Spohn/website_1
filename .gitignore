@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Hugo local build output
+/public/
+.hugo_build.lock
