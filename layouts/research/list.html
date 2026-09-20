@@ -1,0 +1,60 @@
+{{ define "main" }}
+<main class="page-main pa4" role="main">
+  <section class="page-content mw8 center">
+
+    <h1 class="f2 fw5 mt4 mb3">{{ .Title }}</h1>
+    {{ with .Content }}<div class="research-intro f4 lh-copy measure-wide">{{ . }}</div>{{ end }}
+
+    {{/* Status groups render in a fixed order. An empty group renders nothing,
+         so e.g. "Job Market Paper" stays invisible until a paper is tagged jmp. */}}
+    {{ $all := where site.RegularPages "Section" "research" }}
+    {{ range slice
+        (dict "key" "jmp"         "label" "Job Market Paper")
+        (dict "key" "publication" "label" "Publications")
+        (dict "key" "wp"          "label" "Working Papers")
+        (dict "key" "wip"         "label" "Work in Progress")
+        (dict "key" "policy"      "label" "Policy Research &amp; Briefs") }}
+      {{ $label := .label }}
+      {{ with (where $all "Params.status" .key).ByWeight }}
+      <section class="research-group">
+        <h2 class="research-group-title f5 fw7 ttu tracked">{{ $label | safeHTML }}</h2>
+
+        {{ range . }}
+        {{ $paper := . }}
+        <article class="research-item">
+          <h3 class="research-item-title f4 fw6 lh-title mv0">{{ .Title | markdownify }}</h3>
+
+          {{ $meta := slice }}
+          {{ with .Params.authors }}{{ $meta = $meta | append . }}{{ end }}
+          {{ with .Params.outlet }}{{ $meta = $meta | append (printf "<em>%s</em>" .) }}{{ end }}
+          {{ with .Params.year }}{{ $meta = $meta | append (printf "%v" .) }}{{ end }}
+          {{ with $meta }}<p class="research-item-meta f6 mv1">{{ delimit . " &middot; " | safeHTML }}</p>{{ end }}
+
+          {{ with .Params.description }}<p class="f5 lh-copy mv2 measure-wide">{{ . | markdownify }}</p>{{ end }}
+
+          {{ with .Params.excerpt }}
+          <details class="research-abstract mv2">
+            <summary class="f6">Abstract</summary>
+            <div class="f6 lh-copy mt2 measure-wide">{{ . | markdownify }}</div>
+          </details>
+          {{ end }}
+
+          {{ with .Params.awards }}
+          <ul class="research-awards f6 mv2">
+            {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+          </ul>
+          {{ end }}
+
+          {{ with .Params.note }}<p class="research-note f6 mv2">{{ . | markdownify }}</p>{{ end }}
+
+          {{ with .Params.links }}<div class="research-links mt3">{{ partial "shared/btn-links.html" $paper }}</div>{{ end }}
+        </article>
+        {{ end }}
+
+      </section>
+      {{ end }}
+    {{ end }}
+
+  </section>
+</main>
+{{ end }}

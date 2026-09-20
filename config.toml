@@ -13,6 +13,10 @@ paginate = 5
 preserveTaxonomyNames = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 enableEmoji = true
+# Hugo lowercases menu URLs by default, which turned the CV link into
+# /cv_spohn.pdf. That resolves on Windows but 404s on Netlify's case-sensitive
+# filesystem. Verified: enabling this changes nothing else in the built output.
+disablePathToLower = true
 
 [markup]
   defaultMarkdownHandler = "goldmark"
@@ -28,12 +32,12 @@ enableEmoji = true
     style = "github"
     
 [params]
-  orgName = "RStudio"
-  orgLocal = "Anywhere"
+  orgName = "Max Spohn"
+  orgLocal = ""
   description = "A modern, beautiful, and easily configurable blog theme for Hugo."
   favicon = "/img/algorithm.png"
   # logo = "/img/blogophonic-mark-dark.png"
-  mainSections = ["blog", "project", "talk"]
+  mainSections = ["research"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
@@ -110,16 +114,16 @@ enableEmoji = true
     title = "Home"
     url = "/"
     weight = 1
-#  [[menu.header]]
-#    name = "Research"
-#    title = "Research"
-#    url = "/collection/"
-#    weight = 2
+  [[menu.header]]
+    name = "Research"
+    title = "Research"
+    url = "/research/"
+    weight = 2
   [[menu.header]]
     name = "CV"
     title = "CV"
-    url = "/project/"
-    weight = 2
+    url = "/CV_Spohn.pdf"
+    weight = 3
     
   # Configure footer  
 #  [[menu.footer]]

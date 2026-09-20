@@ -1,1 +1,126 @@
 // Override this file to add your own SCSS styling.
+
+// ---------------------------------------------------------------------------
+// Homepage hero
+// ---------------------------------------------------------------------------
+
+// The photo. Default size lives here; override per-page with `image_max_width`
+// in content/_index.md front matter (e.g. image_max_width: "260px").
+.home-hero-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: inline-block;
+}
+
+// Desktop (the breakpoint at which `flex-l` turns the hero into a flex row):
+// nudge the photo down so its top edge lines up with the name rather than with
+// the h1's 2rem top margin.
+@media screen and (min-width: 60em) {
+  .home-hero-photo {
+    padding-top: 2rem;
+  }
+}
+
+// Below the flex breakpoint the photo stacks above the text, so centre it
+// rather than leaving it right-aligned against the edge.
+@media screen and (max-width: 60em) {
+  .home-hero-photo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 30em) {
+  .home-hero-image {
+    max-width: 200px;
+  }
+}
+
+// Once the hero stacks, the bio no longer sits alongside the photo, so the
+// right-aligned setting that reads well on desktop just makes for a ragged
+// left edge. Left-align it below the flex breakpoint. The `.tr` in the
+// selector is tachyons' own class, matched here only to outrank it.
+@media screen and (max-width: 60em) {
+  .home-hero-text.tr {
+    text-align: left;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sections stacked below the homepage hero
+// ---------------------------------------------------------------------------
+
+.home-section {
+  h2 {
+    opacity: 0.7;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// /research/ listing
+// ---------------------------------------------------------------------------
+
+.research-intro {
+  margin-bottom: 3rem;
+}
+
+.research-group {
+  margin-bottom: 3.5rem;
+}
+
+.research-group-title {
+  opacity: 0.7;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.research-item {
+  margin-bottom: 2.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.research-item-meta {
+  opacity: 0.75;
+}
+
+.research-awards {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.15rem;
+
+    // Small award marker, so paper-level honours read as distinct from the
+    // coauthor/outlet line without shouting.
+    &::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      opacity: 0.55;
+    }
+  }
+}
+
+.research-note {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+// btn-links sit tighter in a dense list than they do on a project card.
+.research-links .btn-links {
+  margin-bottom: 0.4rem;
+}
+
+.research-abstract {
+  summary {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}

@@ -2,12 +2,15 @@
 action_label: Read More &rarr;
 action_link: /about
 action_type: text
-description1: Hi! I'm a PhD candidate in Public Policy at Harvard Kennedy School, working at the intersection of psychology, economics, and political science. I am interested in the formation and the effects of political and economic beliefs, such as beliefs about election fraud or social mobility, and how narratives are used to persuade people. I also work on questions related to evidence adoption in the public sector and affective polarization. 
-description2: I hold a BSc in Philosophy, Politics and Economics from University College London and a Master of Behavioral and Decision Science from the University of Pennsylvania. Most recently, I worked as a Behavioral Economist at the UK's Financial Conduct Authority, where I ran online experiments on financial decision-making. 
+description1: Hi! I’m a PhD candidate in Public Policy at Harvard Kennedy School, working at the intersection of Behavioral Science and Public Policy and Management. I am interested in how scientific research informs decisions made by governments and organizations as well as interventions to increase evidence adoption at scale. I also work on polarization and other topics in Judgment and Decision Making.
+description2: I hold a BSc in Philosophy, Politics and Economics from University College London and a Master of Behavioral and Decision Science from the University of Pennsylvania. Before starting my PhD, I worked as a Behavioral Economist at the UK’s Financial Conduct Authority, where I ran online experiments on financial decision-making.
 description3: I am originally from Austria and love to travel and try food around the world. Music also plays an important role in my life.
 image_left: true
 images:
 - img/_MG_9143.jpg
+recent_article:
+  citation: "“A research agenda for making evidence useful, usable and used in policymaking” (2026). With Elizabeth Linos, Pedro Rey-Biel, et al. *Nature Human Behaviour.*"
+  url: "https://doi.org/10.1038/s41562-026-02593-3"
 show_action_link: false
 show_social_links: false
 subtitle: PhD Candidate in Public Policy @ Harvard Kennedy School
