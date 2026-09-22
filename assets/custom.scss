@@ -4,8 +4,29 @@
 // Homepage hero
 // ---------------------------------------------------------------------------
 
-// The photo. It fills its column up to a cap, so the 1/3 column reads as the
-// photo's space rather than as a large empty gutter. Override per-page with
+// Vertical rhythm of the hero text. The name uses lh-solid (line-height 1), so
+// the "p" descender in "Spohn" overflows its box by ~0.175em -- the visible gap
+// is that much smaller than the margin. This is in em so it tracks the name's
+// size across breakpoints, and is set to leave roughly 0.27em of actual ink
+// separation above the role.
+.home-hero-name {
+  margin: 0 0 0.45em;
+}
+
+.home-hero-role {
+  margin: 0 0 2rem;
+}
+
+.home-hero-blurb p {
+  margin: 0 0 1.15rem;
+}
+
+.home-hero-social {
+  margin-top: 2rem;
+}
+
+// The photo. Fills its column up to a cap, so the right-hand third reads as
+// the photo's space rather than as an empty gutter. Override per-page with
 // `image_max_width` in content/_index.md front matter.
 .home-hero-image {
   width: 100%;
@@ -14,17 +35,29 @@
   display: inline-block;
 }
 
-// Desktop: photo sits in the right-hand third, hugging the right edge, with a
-// gutter between it and the text. h1 carries mt0, so no top offset is needed
-// for the photo to line up with the name.
+// Desktop: an explicit grid, so each piece is placed independently of DOM
+// order. That lets the photo sit beside the BLURB (row 3) rather than beside
+// the name, while the photo stays first in the markup for phone stacking.
 @media screen and (min-width: 60em) {
+  .home-hero {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+
+  .home-hero-name  { grid-column: 1; grid-row: 1; }
+  .home-hero-role  { grid-column: 1; grid-row: 2; }
+  .home-hero-blurb { grid-column: 1; grid-row: 3; }
+
   .home-hero-photo {
+    grid-column: 2;
+    grid-row: 3;
     text-align: right;
-    padding-left: 2.5rem;
   }
 }
 
-// Below the flex breakpoint the photo stacks above the text, so centre it.
+// Below the grid breakpoint this is plain block flow: photo on top, centred.
 @media screen and (max-width: 60em) {
   .home-hero-photo {
     text-align: center;

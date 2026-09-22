@@ -1,26 +1,31 @@
 {{ define "main" }}
 {{ $page := . }}
-<main class="page-main pa4" role="main">
+{{/* pv4/ph5 rather than pa4: the header uses ph5, so pa4 here made the main
+     content 2rem wider than the header on each side -- the photo overhung the
+     nav on the right and the body text started left of the site brand. */}}
+<main class="page-main pv4 ph5" role="main">
   <section class="page-content mw9 center">
-    {{/* The photo div comes FIRST in the DOM so that on narrow screens, where
-         `flex-l` is inactive and these stack as blocks, the photo sits ABOVE the
-         text. On desktop we flip to row-reverse when the photo belongs on the
-         right, which keeps the markup order without affecting the layout. */}}
-    <div class="flex-l items-start" style="{{ if not .Params.image_left }}flex-direction: row-reverse;{{ end }}">
 
-      <div class="home-hero-photo w-third-l">
+    {{/* The photo comes FIRST in the DOM so that on a phone, where this is
+         plain block flow, it sits above everything. On desktop the grid places
+         each piece explicitly, so DOM order stops mattering and the photo can
+         sit beside the blurb instead of beside the name. */}}
+    <div class="home-hero">
+
+      <div class="home-hero-photo">
       {{ with .Params.images }}
         {{ range first 1 . }}<img class="home-hero-image mv0" src="{{ . }}" alt="{{ $page.Params.title }}"{{ with $page.Params.image_max_width }} style="max-width: {{ . }};"{{ end }} />{{ end }}
       {{ end }}
       </div>
 
-      <div class="home-hero-text w-two-thirds-l {{ if not .Params.text_align_left }}tr{{ end }}">
-        {{ with .Params.title }}<h1 class="f2 f1-m f-subheadline-l fw5-ns mt0 mb2 lh-solid">{{ . }}</h1>{{ end }}
-        {{ with .Params.subtitle }}<h2 class="f5 fw7 mt0 mb4 ttu tracked">{{ . }}</h2>{{ end }}
-        {{ with .Params.description1 }}<p class="f4 mt0 mb3 lh-copy">{{ . | markdownify }}</p>{{ end }}
-        {{ with .Params.description2 }}<p class="f4 mt0 mb3 lh-copy">{{ . | markdownify }}</p>{{ end }}
-        {{ with .Params.description3 }}<p class="f4 mt0 mb3 lh-copy">{{ . | markdownify }}</p>{{ end }}
-        {{ if .Params.show_social_links }}<div class="home-hero-social mt4">{{ partial "shared/social-links.html" . }}</div>{{ end }}
+      {{ with .Params.title }}<h1 class="home-hero-name f2 f1-m f-subheadline-l fw5-ns lh-solid">{{ . }}</h1>{{ end }}
+      {{ with .Params.subtitle }}<h2 class="home-hero-role f5 fw7 ttu tracked">{{ . }}</h2>{{ end }}
+
+      <div class="home-hero-blurb">
+        {{ with .Params.description1 }}<p class="f4 lh-copy">{{ . | markdownify }}</p>{{ end }}
+        {{ with .Params.description2 }}<p class="f4 lh-copy">{{ . | markdownify }}</p>{{ end }}
+        {{ with .Params.description3 }}<p class="f4 lh-copy">{{ . | markdownify }}</p>{{ end }}
+        {{ if .Params.show_social_links }}<div class="home-hero-social">{{ partial "shared/social-links.html" . }}</div>{{ end }}
         {{ if .Params.show_action_link }}<a class="mt4 action {{ .Params.action_type }}" href="{{ .Params.action_link | relURL }}">{{ .Params.action_label | safeHTML }}</a>{{ end }}
       </div>
 
