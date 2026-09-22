@@ -4,30 +4,35 @@
 // Homepage hero
 // ---------------------------------------------------------------------------
 
-// The photo. Default size lives here; override per-page with `image_max_width`
-// in content/_index.md front matter (e.g. image_max_width: "260px").
+// The photo. It fills its column up to a cap, so the 1/3 column reads as the
+// photo's space rather than as a large empty gutter. Override per-page with
+// `image_max_width` in content/_index.md front matter.
 .home-hero-image {
   width: 100%;
-  max-width: 300px;
+  max-width: 340px;
   height: auto;
   display: inline-block;
 }
 
-// Desktop (the breakpoint at which `flex-l` turns the hero into a flex row):
-// nudge the photo down so its top edge lines up with the name rather than with
-// the h1's 2rem top margin.
+// Desktop: photo sits in the right-hand third, hugging the right edge, with a
+// gutter between it and the text. h1 carries mt0, so no top offset is needed
+// for the photo to line up with the name.
 @media screen and (min-width: 60em) {
   .home-hero-photo {
-    padding-top: 2rem;
+    text-align: right;
+    padding-left: 2.5rem;
   }
 }
 
-// Below the flex breakpoint the photo stacks above the text, so centre it
-// rather than leaving it right-aligned against the edge.
+// Below the flex breakpoint the photo stacks above the text, so centre it.
 @media screen and (max-width: 60em) {
   .home-hero-photo {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .home-hero-image {
+    max-width: 240px;
   }
 }
 
@@ -37,14 +42,17 @@
   }
 }
 
-// Once the hero stacks, the bio no longer sits alongside the photo, so the
-// right-aligned setting that reads well on desktop just makes for a ragged
-// left edge. Left-align it below the flex breakpoint. The `.tr` in the
-// selector is tachyons' own class, matched here only to outrank it.
-@media screen and (max-width: 60em) {
-  .home-hero-text.tr {
-    text-align: left;
-  }
+// Social icons. The SVG marks (X, Bluesky) need explicit sizing to sit level
+// with the Font Awesome / academicons glyphs beside them.
+.social-svg {
+  width: 1.15em;
+  height: 1.15em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.social-icon-links a {
+  text-decoration: none;
 }
 
 // ---------------------------------------------------------------------------

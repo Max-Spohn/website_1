@@ -1,7 +1,12 @@
-baseURL = "/"
+# Must be the real absolute URL, not "/": og:url and og:image are built with
+# absURL, and a relative value there means crawlers (LinkedIn, Slack, Twitter)
+# cannot fetch the share card. www.maxspohn.com 301s to the apex, so the apex is
+# canonical. netlify.toml overrides this with -b $DEPLOY_PRIME_URL for branch
+# and preview builds, so those stay correct.
+baseURL = "https://maxspohn.com/"
 theme = "hugo-apero"
 languageCode = "en"
-title = ""
+title = "Max Spohn"
 author = "Max Spohn"
 copyright = "" # set to override the auto generated copyright using org info and now year
 googleAnalytics = ""
@@ -34,7 +39,7 @@ disablePathToLower = true
 [params]
   orgName = "Max Spohn"
   orgLocal = ""
-  description = "A modern, beautiful, and easily configurable blog theme for Hugo."
+  description = "PhD candidate in Public Policy at Harvard Kennedy School. I study evidence adoption in government and organizations, and interventions to reduce polarization."
   favicon = "/img/algorithm.png"
   # logo = "/img/blogophonic-mark-dark.png"
   mainSections = ["research"]
@@ -45,7 +50,7 @@ disablePathToLower = true
   socialInFooter = true
   # Default image for social sharing and search engines. 
   # Place image file in `static` folder and specify image name here.
-  sharing_image = "/img/papillons.jpg"
+  sharing_image = "/img/_MG_9143.jpg"
   # Twitter username (without @). Used when a visitor shares your site on Twitter.
   twitter = "MaxSpohn"
   
@@ -89,18 +94,33 @@ disablePathToLower = true
   # Icon pack "fab" includes brand icons, see: https://fontawesome.com/icons?d=gallery&s=brands&m=free
   # Icon pack "fas" includes solid icons, see: https://fontawesome.com/icons?d=gallery&s=solid&m=free
   # Icon pack "far" includes regular icons, see: https://fontawesome.com/icons?d=gallery&s=regular&m=free
+  # `icon` + `icon_pack` uses Font Awesome 5.15.1 ("fas"/"fab") or academicons
+  # ("ai"). Neither ships an X or Bluesky mark -- both postdate FA 5.15.1 -- so
+  # those two use `svg` instead, rendered inline by
+  # layouts/partials/shared/social-links.html.
   [[params.social]]
-      icon      = "envelope" # icon name without the 'fa-'
+      icon      = "envelope"
       icon_pack = "fas"
-      url       = "hspohn@g.harvard.edu"
+      name      = "Email"
+      url       = "mailto:hspohn@g.harvard.edu"
   [[params.social]]
-      icon      = "twitter" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://twitter.com/MaxSpohn"
+      icon      = "google-scholar"
+      icon_pack = "ai"
+      name      = "Google Scholar"
+      url       = "https://scholar.google.com/citations?user=6bedqfAAAAAJ&hl=en"
   [[params.social]]
-      icon      = "linkedin" # icon name without the 'fa-'
+      icon      = "linkedin"
       icon_pack = "fab"
+      name      = "LinkedIn"
       url       = "https://www.linkedin.com/in/max-spohn/"
+  [[params.social]]
+      svg       = "x"
+      name      = "X"
+      url       = "https://x.com/MaxSpohn"
+  [[params.social]]
+      svg       = "bluesky"
+      name      = "Bluesky"
+      url       = "https://bsky.app/profile/maxspohn.bsky.social"
 
 [taxonomies]
   category = "categories"

@@ -1,0 +1,35 @@
+{{/* Override of the theme partial. Two changes:
+     1. Supports an `svg` key for marks that Font Awesome 5.15.1 and academicons
+        do not ship (X, Bluesky -- both postdate FA 5.15.1).
+     2. Drops the theme's aria-hidden="true" on the wrapper and gives each link
+        a real accessible label from `name`. These are links, not decoration,
+        so hiding them from assistive tech loses the only route to them.
+     A scheme-ful url (mailto:, https:) is passed through untouched; only a
+     scheme-less one is treated as site-relative. */}}
+<div class="social-icon-links">
+  {{ range site.Params.social }}
+    {{ $link := .url }}
+    {{ $scheme := (urls.Parse $link).Scheme }}
+    {{ $target := "" }}
+    {{ if not $scheme }}
+      {{ $link = .url | relLangURL }}
+    {{ else if in (slice "http" "https") $scheme }}
+      {{ $target = "target=\"_blank\" rel=\"me noopener\"" }}
+    {{ end }}
+    {{ $label := or .name .icon .svg }}
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="{{ $link | safeURL }}" title="{{ $label }}" aria-label="{{ $label }}" {{ $target | safeHTMLAttr }}>
+      {{- if .svg -}}
+        {{- if eq .svg "x" -}}
+        <svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        {{- else if eq .svg "bluesky" -}}
+        <svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078c2.67.297 5.568-.628 6.383-3.364C23.622 9.418 24 4.458 24 3.768c0-.688-.139-1.86-.902-2.203c-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8Z"/></svg>
+        {{- end -}}
+      {{- else -}}
+        {{- $pack := or .icon_pack "fas" -}}
+        {{- $pack_prefix := $pack -}}
+        {{- if in (slice "fab" "fas" "far" "fal") $pack -}}{{- $pack_prefix = "fa" -}}{{- end -}}
+        <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} fa-lg fa-fw"></i>
+      {{- end -}}
+    </a>
+  {{ end }}
+</div>
