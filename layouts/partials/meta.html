@@ -46,9 +46,17 @@
 
 <!--sharing images-->
 <!--adapted from: https://github.com/kaushalmodi/hugo-bare-min-theme/blob/6195b5e377c56791ba4067ac0ec5286bf336aedf/layouts/partials/twitter_cards.html-->
+{{/* A page-level `sharing_image` wins: `images` front matter is a layout input
+     (the homepage hero photo) and a portrait hero makes a badly cropped share
+     card, so a page must be able to name its own card. */}}
+{{- if $.Params.sharing_image -}}
+    {{- $card_url := $.Params.sharing_image | absURL -}}
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta property="og:image" content="{{ $card_url }}" >
+    <meta name="twitter:image" content="{{ $card_url }}"/>
 {{/* If images are specified as list variable in section front matter. */}}
-{{- with $.Params.images -}}
-    {{- $image := (index . 0) -}}
+{{- else if $.Params.images -}}
+    {{- $image := (index $.Params.images 0) -}}
     {{- $image_link_absolute := (findRE "^/" $image) -}}
     {{- $image_url := cond (ne (len $image_link_absolute) 0) ($image | absURL) (printf "%s%s" $permalink $image) -}}
     <meta name="twitter:card" content="summary_large_image"/>

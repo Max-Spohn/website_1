@@ -50,7 +50,9 @@ disablePathToLower = true
   socialInFooter = true
   # Default image for social sharing and search engines. 
   # Place image file in `static` folder and specify image name here.
-  sharing_image = "/img/_MG_9143.jpg"
+  # 1200x630 card, the aspect ratio summary_large_image expects. Regenerate with
+  # scripts/make-og-card.ps1 (e.g. after a new photo).
+  sharing_image = "/img/og-card.jpg"
   # Twitter username (without @). Used when a visitor shares your site on Twitter.
   twitter = "MaxSpohn"
   

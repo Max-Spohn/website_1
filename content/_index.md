@@ -9,6 +9,7 @@ description3: I am originally from Austria and love to travel and try food aroun
 image_left: false
 images:
 - img/_MG_9143.jpg
+sharing_image: /img/og-card.jpg
 recent_article:
   citation: "Spohn, M., Boland, A., Lasky-Fink, J. et al. A research agenda for making evidence useful, usable and used in policymaking. *Nat Hum Behav* (2026)."
   url: "https://doi.org/10.1038/s41562-026-02593-3"
